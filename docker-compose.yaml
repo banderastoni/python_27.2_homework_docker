@@ -45,6 +45,7 @@ services:
     command: celery -A config worker -l INFO
     depends_on:
       - redis
+      - db
 
   celery_beat:
     build: .
@@ -53,6 +54,7 @@ services:
     command: celery -A config beat -l INFO -S django
     depends_on:
       - redis
+      - db
 
 volumes:
   pg_data:
